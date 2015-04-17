@@ -1,0 +1,5 @@
+C:\Users\nerzid\AndroidStudioProjects\BayiDenetimProject\app\build\intermediates\classes\debug
+C:\Users\nerzid\AndroidStudioProjects\BayiDenetimProject\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-a06206ffa9adc27ad305fe63606cac6a2221fd76.jar
+C:\Users\nerzid\AndroidStudioProjects\BayiDenetimProject\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-a0cfe91904d4be71ad07868504e0553e4eb2c87c.jar
+C:\Users\nerzid\AndroidStudioProjects\BayiDenetimProject\app\build\intermediates\pre-dexed\debug\classes-abbbd2e4687a642d89396e2aeb318e05b4da6b44.jar
+C:\Users\nerzid\AndroidStudioProjects\BayiDenetimProject\app\build\intermediates\pre-dexed\debug\classes-62607d9e72551d635ee615565cb3805bd365b094.jar
