@@ -21,7 +21,7 @@
             String companyName="", companyOffName="";
             Class.forName("com.mysql.jdbc.Driver");
              System.out.println("driver loaded");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/BayiDenetim","se302","SE302");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://mysql03.turhost.com:3306/BayiDenetim", "se302", "SE302");
              System.out.println("connection comleted");
              
              
