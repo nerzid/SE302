@@ -16,7 +16,7 @@
         <%
           try{
             Class.forName("com.mysql.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/bayidenetim","root","");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/bayidenetim","se302","SE302");
         Statement statement = connection.createStatement();
         
         String CompanyOffID = request.getParameter("CompanyOffID");

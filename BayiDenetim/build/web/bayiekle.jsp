@@ -30,7 +30,7 @@
             String companyName="", address="";
             Class.forName("com.mysql.jdbc.Driver");
              System.out.println("driver loaded");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/BayiDenetim","root","");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/BayiDenetim","se302","SE302");
              System.out.println("connection comleted");
             
             String query = "SELECT companyOffID FROM BayiDenetim.CompanyOfficer where email ='"+email+"';";

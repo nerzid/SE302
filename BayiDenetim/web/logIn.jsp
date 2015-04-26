@@ -24,7 +24,7 @@
 
             Class.forName("com.mysql.jdbc.Driver");
             System.err.println("Driver loadeddd");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/BayiDenetim", "root", "");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/BayiDenetim", "se302", "SE302");
             System.err.println("Connection completed");
             Statement statement = connection.createStatement();
             String query = "SELECT email, password FROM BayiDenetim.CompanyOfficer where email='" + email + "' and password='" + password + "'";
