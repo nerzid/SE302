@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <servlet>
+        <servlet-name>SendForms</servlet-name>
+        <servlet-class>servlet.SendForms</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReceiveForms</servlet-name>
+        <servlet-class>servlet.ReceiveForms</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SendForms</servlet-name>
+        <url-pattern>/SendForms</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>TabletAuthentication</servlet-name>
+        <servlet-class>servlet.TabletAuthentication</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TabletAuthentication</servlet-name>
+        <url-pattern>/TabletAuthentication</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReceiveForms</servlet-name>
+        <url-pattern>/ReceiveForms</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
