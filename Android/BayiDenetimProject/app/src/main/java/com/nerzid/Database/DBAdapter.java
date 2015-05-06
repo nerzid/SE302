@@ -1,10 +1,18 @@
 package com.nerzid.Database;
+import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
+import android.provider.UserDictionary;
 import android.util.Log;
+
+import com.nerzid.Main.MainActivity;
+
+import java.net.URI;
 
 
 // TO USE:
@@ -31,6 +39,9 @@ public class DBAdapter {
     public static final String KEY_ANSWER_1 = "answer_1";
     public static final String KEY_ANSWER_2 = "answer_2";
     public static final String KEY_ANSWER_3 = "answer_3";
+    public static final String KEY_ANSWER_1_COUNT = "answer_1_count";
+    public static final String KEY_ANSWER_2_COUNT = "answer_2_count";
+    public static final String KEY_ANSWER_3_COUNT = "answer_3_count";
 
     // TODO: Setup your field numbers here (0 = KEY_ROWID, 1=...)
     public static final int COL_FORM_NO = 1;
@@ -39,15 +50,19 @@ public class DBAdapter {
     public static final int COL_ANSWER_1 = 4;
     public static final int COL_ANSWER_2 = 5;
     public static final int COL_ANSWER_3 = 6;
+    public static final int COL_ANSWER_1_COUNT = 7;
+    public static final int COL_ANSWER_2_COUNT = 8;
+    public static final int COL_ANSWER_3_COUNT = 9;
 
 
-    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_FORM_NO, KEY_FORM_NAME, KEY_QUESTION_NAME, KEY_ANSWER_1, KEY_ANSWER_2, KEY_ANSWER_3};
+
+    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_FORM_NO, KEY_FORM_NAME, KEY_QUESTION_NAME, KEY_ANSWER_1, KEY_ANSWER_2, KEY_ANSWER_3, KEY_ANSWER_1_COUNT, KEY_ANSWER_2_COUNT, KEY_ANSWER_3_COUNT};
 
     // DB info: it's name, and the table we are using (just one).
     public static final String DATABASE_NAME = "MyDb";
     public static final String DATABASE_TABLE = "mainTable";
     // Track DB version if a new version of your app changes the format.
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 5;
 
     private static final String DATABASE_CREATE_SQL =
             "create table " + DATABASE_TABLE
@@ -68,7 +83,10 @@ public class DBAdapter {
                     + KEY_QUESTION_NAME + " string not null, "
                     + KEY_ANSWER_1 + " string not null, "
                     + KEY_ANSWER_2 + " string not null, "
-                    + KEY_ANSWER_3 + " string not null"
+                    + KEY_ANSWER_3 + " string not null, "
+                    + KEY_ANSWER_1_COUNT + " int not null, "
+                    + KEY_ANSWER_2_COUNT + " int not null, "
+                    + KEY_ANSWER_3_COUNT + " int not null"
 
                     // Rest  of creation:
                     + ");";
@@ -100,7 +118,7 @@ public class DBAdapter {
     }
 
     // Add a new set of values to the database.
-    public long insertRow(String form_name, int form_no, String question_name, String answer_1, String answer_2, String answer_3) {
+    public long insertRow(String form_name, int form_no, String question_name, String answer_1, String answer_2, String answer_3, int answer1_count, int answer2_count, int answer3_count) {
 		/*
 		 * CHANGE 3:
 		 */
@@ -115,6 +133,11 @@ public class DBAdapter {
         initialValues.put(KEY_ANSWER_1, answer_1);
         initialValues.put(KEY_ANSWER_2, answer_2);
         initialValues.put(KEY_ANSWER_3, answer_3);
+        initialValues.put(KEY_ANSWER_1_COUNT, answer1_count);
+        initialValues.put(KEY_ANSWER_2_COUNT, answer2_count);
+        initialValues.put(KEY_ANSWER_3_COUNT, answer3_count);
+
+
 
         // Insert it into the database.
         return db.insert(DATABASE_TABLE, null, initialValues);
@@ -150,7 +173,7 @@ public class DBAdapter {
     }
 
     // Get a specific row (by rowId)
-    public Cursor getRow(long rowId) {
+    public Cursor getRowByRowID(long rowId) {
         String where = KEY_ROWID + "=" + rowId;
         Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
                 where, null, null, null, null, null);
@@ -160,10 +183,22 @@ public class DBAdapter {
         return c;
     }
 
-    // Change an existing row to be equal to new data.
-    public boolean updateRow(long rowId, int form_no, String form_name, String question_name, String answer_1, String answer_2, String answer_3) {
-        String where = KEY_ROWID + "=" + rowId;
+    public boolean isQuestionExist(int formID, String question)
+    {
+        //String where = KEY_FORM_NO + " = " + formID + " AND " + KEY_QUESTION_NAME + " = ?";
 
+        String sql = "SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_FORM_NO + " = " + formID + " AND " + KEY_QUESTION_NAME + " = ?";
+
+        //Cursor c = db.query(true,DATABASE_TABLE,ALL_KEYS,where,null,null,null,null,null);
+        Cursor c = db.rawQuery(sql,new String[]{question});
+
+
+        return c.moveToFirst();
+    }
+
+    // Change an existing row to be equal to new data.
+    public void updateRow(int form_no, String form_name, String question_name, String answer_1, String answer_2, String answer_3, int answer_1_count, int answer_2_count, int answer_3_count) {
+        String where = KEY_FORM_NO + "=" + form_no + " AND " + KEY_QUESTION_NAME + " = ?";
 		/*
 		 * CHANGE 4:
 		 */
@@ -177,12 +212,19 @@ public class DBAdapter {
         newValues.put(KEY_ANSWER_1, answer_1);
         newValues.put(KEY_ANSWER_2, answer_2);
         newValues.put(KEY_ANSWER_3, answer_3);
+        newValues.put(KEY_ANSWER_1_COUNT, answer_1_count);
+        newValues.put(KEY_ANSWER_2_COUNT, answer_2_count);
+        newValues.put(KEY_ANSWER_3_COUNT, answer_3_count);
 
-        // Insert it into the database.
-        return db.update(DATABASE_TABLE, newValues, where, null) != 0;
+        //String sql = "UPDATE " + DATABASE_TABLE + " SET " + KEY_ANSWER_1_COUNT + " = " + answer_1_count + ", " +KEY_ANSWER_2_COUNT + " = " + answer_2_count + ", " + KEY_ANSWER_3_COUNT + " = " + answer_3_count + " " +
+        //        "WHERE " + KEY_FORM_NO + "=" + form_no + " AND " + KEY_QUESTION_NAME + " = ?";
+
+
+        //db.rawQuery(sql, new String[]{question_name});
+
+        db.update(DATABASE_TABLE,newValues,where,new String[]{question_name});
+
     }
-
-
 
     /////////////////////////////////////////////////////////////////////
     //	Private Helper Classes:

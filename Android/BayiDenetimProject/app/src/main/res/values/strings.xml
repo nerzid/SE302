@@ -4,5 +4,22 @@
     <string name="app_name">EreninMuritleri</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="TabletKey">Tablet Key</string>
+    <string name="TabletPass">Tablet Password</string>
+    <string name="loginBtn">Login</string>
+    <string name="dialog_message">Tablet Key or Password is Wrong!</string>
+    <string name="dialog_title">Authentication Failed</string>
+    <string name="dialog_formError_message">There are no forms currently in database. Please check your internet connection. If you have internet connection, please add forms in website</string>
+    <string name="dialog_formError_title">No Forms to Display</string>
+    <string name="dialog_loadingProgress_message">Please Wait..</string>
+    <string name="dialog_loadingProgress_title">Loading Forms</string>
+    <string name="dialog_loadingProgressSending_title">Sending Forms</string>
+    <string name="dialog_loadingProgressSendingJsonConnection_message">Waiting for JSON..</string>
+    <string name="dialog_loadingProgressSendingError_message">Couldnt send forms properly.</string>
+    <string name="dialog_loadingProgressSendingError_title">Error on Sending Forms</string>
+    <string name="dialog_loadingProgressSendingCompeleted_title">Sending Completed</string>
+    <string name="dialog_loadingProgressSendingSucess_message">Forms send successfully</string>
+    <string name="dialog_loadingProgressSendingFail_message">Forms couldnt send</string>
+    <string name="title_activity_loading">LoadingActivity</string>
 </resources>
