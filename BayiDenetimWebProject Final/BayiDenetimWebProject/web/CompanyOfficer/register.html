@@ -6,14 +6,60 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-             <form method="get" action="register.jsp">
+        <link rel="stylesheet" href="../layout/styles/layout.css" type="text/css" />
 
-        <table border="2" align="center">
-        <caption>User Register</caption>  
+    </head>
+
+     <body id="top">
+<div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="#">Bayi Denetim</a></h1>
+      <p><strong></strong></p>
+    </div>
+    <div id="newsletter">
+      <p></p>
+      <form  method="get" action="../CompanyOfficer/logIn.jsp">
+        <fieldset>
+          <legend>NewsLetter</legend>
+ <input type="text" name="email" required="required"/>
+<input type="text" name="password" required="required"/>
+ <input type="submit" name="login" value="login" />
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+         
+<div class="wrapper col2">
+  <div id="topbar">
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="../index.html">Anasayfa</a></li>
+        <li><a href="../hakkimizda.html">Hakkimizda</a></li>
+        <li><a href="../Home/registerCompany.html">Ücretsiz Üye Ol</a></li>
+        <li><a href="../iletisim.html">Iletisim</a></li>
+
+        <li class="last"><a href="../bayidenetim.html">Bayi Denetim Sistemi</a></li>
+      </ul>
+    </div>
+    
+    <br class="clear" />
+  </div>
+</div>
+
+  <div class="wrapper col3">
+  <div id="intro">
+    <div class="fl_left">
+  
+
+               <form method="get" action="register.jsp">
+
+        <table>
+        <caption>Company Officer Register</caption>  
         <tr>
             <td> Company Officer Name: </td> <td> <input type="text" name="CompanyOffName" required="required"><br>  </td>
         </tr>
@@ -32,8 +78,24 @@ and open the template in the editor.
         </tr>
           </table>
     </form>
-    
-    
+        
+        
+        
+        
+             <form method="get" action="../CompanyOfficer/register.html">
+
+        <input type="submit" name="register" value ="Register for Company Officer">
    
+             </form>
+       
+      
+    </div>
+      <div class="fl_right"><img src="../images/demo/p1.jpg" width="350" height="350"/></div>
+  </div>
+</div>
+         
+         
+
+
     </body>
 </html>

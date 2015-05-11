@@ -1,18 +1,59 @@
-<%-- 
-    Document   : formListe
-    Created on : May 1, 2015, 8:26:25 PM
-    Author     : pinarsolak
---%>
+
 <%@page import="java.sql.*"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
+
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <link rel="stylesheet" href="../layout/styles/layout.css" type="text/css" />
+
         <title>JSP Page</title>
     </head>
-    <body>
+     <body id="top">
+         
+         
+         <div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="#">Bayi Denetim</a></h1>
+      <p><strong></strong></p>
+    </div>
+    <div id="newsletter">
+      <p></p>
+     
+         <form  method="get" action="../index.html">
+        <fieldset>
+          <legend>NewsLetter</legend>
+       
+   
+        <input type="submit" name="logout" value="Log-out" />
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>  
+
+         <div class="wrapper col2">
+  <div id="topbar">
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="../CompanyOfficer/profile.jsp">Profil</a></li>
+        
+      </ul>
+    </div>
+    
+    <br class="clear" />
+  </div>
+</div>    
+            <div class="wrapper col3">
+  <div id="intro">
+    <div class="fl_left">
+  
+ 
+       
                <%
        
         String email = session.getAttribute("email").toString();
@@ -64,7 +105,9 @@
                      
                      
             %>
-            <table border="2" align="center">
+           
+    
+            <table>
                 <tr>
                    
                     <td>Form</td>
@@ -78,22 +121,29 @@
                  fName = resultSet2.getString("fName");
                   %>
               <tr>
-              <form method="get" action="/BayiDenetimWebApp/Question/soruListe.jsp">
+              <form method="get" action="../Question/soruListe.jsp">
                   <td> <input type="submit" name="fName" value="<%out.print(fName);%>"><br></td>
                    </form>
-                   
-            
+             
             </tr>    
                   <%
              }
              
-                  
+              %> 
               
+               </table>
+              
+              <%
                }catch(Exception e){
                     
             }
              %>
-        
-       
+
+             
+             
+                   </div>
+      <div class="fl_right"><img src="../images/demo/p1.jpg" width="350" height="350"/></div>
+  </div>
+</div>
     </body>
 </html>

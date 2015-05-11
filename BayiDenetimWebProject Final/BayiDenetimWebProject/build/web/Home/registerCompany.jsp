@@ -41,7 +41,7 @@
             <p align="center"> <% out.println("Registration is succeed"); %></p>
    
     <%
-            response.sendRedirect("/BayiDenetimWebApp/Home/homePage.html");
+            response.sendRedirect("../Home/homepage.html");
         
           
         }catch(Exception e){

@@ -62,7 +62,7 @@
                  fName = resultSet2.getString("fName");
                   %>
               <tr>
-              <form method="get" action="/BayiDenetimWebApp/Question/soruListe.jsp">
+              <form method="get" action="../Question/soruListe.jsp">
                   <td> <input type="submit" name="fName" value="<%out.print(fName);%>"><br></td>
              </form>
             </tr>    

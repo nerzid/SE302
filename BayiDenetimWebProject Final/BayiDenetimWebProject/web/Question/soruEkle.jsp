@@ -69,7 +69,7 @@
             statement5.executeUpdate(query5);
 
         
-            response.sendRedirect("/BayiDenetimWebApp/CompanyOfficer/profile.jsp");
+            response.sendRedirect("../BayiDenetimWebProject/index.html");
         }  catch (Exception e) {
 
                System.out.println("olmadı");

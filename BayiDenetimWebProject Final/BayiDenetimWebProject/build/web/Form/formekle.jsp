@@ -70,7 +70,7 @@
                   httpSession.setAttribute("fID", fID);
                    
                    
-                   response.sendRedirect("./soruEkle.html");
+                   response.sendRedirect("../Question/soruEkle.html");
 
         
         }  catch (Exception e) {

@@ -6,10 +6,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="../layout/styles/layout.css" type="text/css" />
+
         <title>JSP Page</title>
     </head>
-    <body>
+   <body id="top">
+       
 
+       
   <%
        System.out.println("burdaaa");
         String email = session.getAttribute("email").toString();
@@ -41,31 +45,73 @@
             
             
             %>
-          
+       
+                
+    <div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="#">Bayi Denetim</a></h1>
+      <p><strong></strong></p>
+    </div>
+    <div id="newsletter">
+      <p></p>
+     
+         <form  method="get" action="../index.html">
+        <fieldset>
+          <legend>NewsLetter</legend>
+       
+   
+        <input type="submit" name="logout" value="Log-out" />
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+         
+<div class="wrapper col2">
+  <div id="topbar">
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="../CompanyOfficer/profile.jsp">Welcome Dear <%out.println(companyOffName);%></a></li>
+        
+      </ul>
+    </div>
+    
+    <br class="clear" />
+  </div>
+</div>    
             
-              <caption width="200px"><td>Welcome Dear <%out.println(companyOffName);%> </caption> 
+            
+            
+            
+            
+            <div class="wrapper col3">
+  <div id="intro">
+    <div class="fl_left">
+  
               <br><br>
-                <table border="2" align="left">
-                    <form action="/BayiDenetimWebApp/Dealer/bayiekle.html" method="get">
+                <table>
+                    <form action="../Dealer/bayiekle.html" method="get">
                     <tr>
-                        <td>Bayi Ekle</td><td><input type="submit" name="bayiEkle" value ="bayiEkle"><br><br></td>
+                        <td>Bayi Ekle</td><td><input type="submit" name="bayiEkle" value ="Bayi Ekle" width="150" height="100"><br><br></td>
         </tr>
-                    </form><form action="/BayiDenetimWebApp/Dealer/bayilistesi.jsp" method="get">
+                    </form><form action="../Dealer/bayilistesi.jsp" method="get">
                 <tr>
-            <td>Bayi Listesini Gör</td><td><input type="submit" name="bliste" value ="bliste"><br><br></td>
+            <td>Bayi Listesini Gör</td><td><input type="submit" name="bliste" value ="Bayi Listesi" width="150" height="100"><br><br></td>
         </tr>
-        </form><form action="/BayiDenetimWebApp/Form/formekle.html" method="get">
+        </form><form action="../Form/formekle.html" method="get">
                 <tr>
-            <td>Form Ekle</td><td><input type="submit" name="fekle" value ="fekle"><br><br></td>
+            <td>Form Ekle</td><td><input type="submit" name="fekle" value ="Form Ekle" width="150" height="100"><br><br></td>
         </tr>
-        </form><form action="/BayiDenetimWebApp/Form/formListe.jsp" method="get">
+        </form><form action="../Form/formListe.jsp" method="get">
                 <tr>
-            <td>Form Listesini Gör</td><td><input type="submit" name="fliste" value ="fliste"><br><br></td>
+                    <td>Form Listesini Gör</td><td><input type="submit" name="fliste" value ="Form Listesi" width="150" height="100"><br><br></td>
         </tr>
                </form>
                 
             </table>
             
+              
             
             
             
@@ -80,6 +126,11 @@
   %>
 
   
+    </div>
+      <div class="fl_right"><img src="../images/demo/p1.jpg" width="350" height="350"/></div>
+  </div>
+</div>
+    
   
     </body>
 </html>

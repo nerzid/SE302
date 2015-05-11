@@ -9,14 +9,54 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        
-        
-         <form method="get" action="bayiekle.jsp">
+        <link rel="stylesheet" href="../layout/styles/layout.css" type="text/css" />
 
-        <table border="2" align="center">
-        <caption>User LogIn</caption>  
+    </head>
+
+     <body id="top">
+<div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="#">Bayi Denetim</a></h1>
+      <p><strong></strong></p>
+    </div>
+    <div id="newsletter">
+      <p></p>
+     
+         <form  method="get" action="../index.html">
+        <fieldset>
+          <legend>NewsLetter</legend>
+       
+   
+        <input type="submit" name="logout" value="Log-out" />
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>  
+
+         <div class="wrapper col2">
+  <div id="topbar">
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="../CompanyOfficer/profile.jsp">Profil</a></li>
+        
+      </ul>
+    </div>
+    
+    <br class="clear" />
+  </div>
+</div>    
+           
+
+  <div class="wrapper col3">
+  <div id="intro">
+    <div class="fl_left">
+  
+         <form method="get" action="../Dealer/bayiekle.jsp">
+
+        <table>
+        
         
         <tr>
             <td> Dealers Name: </td> <td> <input type="text" name="dealersName" required="required"><br>  </td>
@@ -40,6 +80,13 @@ and open the template in the editor.
         
           </table>
     </form>
+   
     
+    </div>
+      <div class="fl_right"><img src="../images/demo/p1.jpg" width="350" height="350"/></div>
+  </div>
+</div>
+         
+          
     </body>
 </html>

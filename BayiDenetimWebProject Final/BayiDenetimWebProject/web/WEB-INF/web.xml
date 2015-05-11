@@ -4,13 +4,17 @@
         <servlet-name>SendForms</servlet-name>
         <servlet-class>servlet.SendForms</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>SendForms</servlet-name>
+        <url-pattern>/SendForms</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ReceiveForms</servlet-name>
         <servlet-class>servlet.ReceiveForms</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SendForms</servlet-name>
-        <url-pattern>/SendForms</url-pattern>
+        <servlet-name>ReceiveForms</servlet-name>
+        <url-pattern>/ReceiveForms</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>TabletAuthentication</servlet-name>
@@ -19,10 +23,6 @@
     <servlet-mapping>
         <servlet-name>TabletAuthentication</servlet-name>
         <url-pattern>/TabletAuthentication</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ReceiveForms</servlet-name>
-        <url-pattern>/ReceiveForms</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
