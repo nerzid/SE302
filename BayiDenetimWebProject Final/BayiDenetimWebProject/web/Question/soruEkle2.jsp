@@ -15,7 +15,7 @@
     </head>
     <body>
             <%
-       
+       request.setCharacterEncoding("UTF-8");
         String email = session.getAttribute("email").toString();
         System.out.println(email);
 
@@ -62,7 +62,7 @@
                  fName = resultSet2.getString("fName");
                   %>
               <tr>
-              <form method="get" action="../Question/soruListe.jsp">
+              <form method="post" action="../Question/soruListe.jsp">
                   <td> <input type="submit" name="fName" value="<%out.print(fName);%>"><br></td>
              </form>
             </tr>    

@@ -32,7 +32,7 @@
     <div id="newsletter">
       <p></p>
      
-         <form  method="get" action="../index.html">
+         <form  method="post" action="../index.html">
         <fieldset>
           <legend>NewsLetter</legend>
        
@@ -61,7 +61,7 @@
     <div class="fl_left">
         
      <%
-       
+       request.setCharacterEncoding("UTF-8");
             String qText = request.getParameter("qText");
             String qID="";
               String aText="";

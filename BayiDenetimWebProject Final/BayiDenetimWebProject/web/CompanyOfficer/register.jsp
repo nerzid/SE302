@@ -15,6 +15,7 @@
     <body>
         <%
           try{
+              request.setCharacterEncoding("UTF-8");
          Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection("jdbc:mysql://mysql03.turhost.com:3306/BayiDenetim", "se302", "SE302");
         Statement statement = connection.createStatement();

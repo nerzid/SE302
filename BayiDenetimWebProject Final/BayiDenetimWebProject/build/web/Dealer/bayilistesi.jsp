@@ -26,7 +26,7 @@
     <div id="newsletter">
       <p></p>
      
-         <form  method="get" action="../index.html">
+         <form  method="post" action="../index.html">
         <fieldset>
           <legend>NewsLetter</legend>
        
@@ -57,7 +57,7 @@
 
         
   <%
-       
+       request.setCharacterEncoding("UTF-8");
         String email = session.getAttribute("email").toString();
         System.out.println(email);
 

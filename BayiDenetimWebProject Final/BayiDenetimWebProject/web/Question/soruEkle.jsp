@@ -16,6 +16,7 @@
     <body>
         
             <%
+           request.setCharacterEncoding("UTF-8");     
           String formID = session.getAttribute("fID").toString();
 
         
@@ -69,9 +70,9 @@
             statement5.executeUpdate(query5);
 
         
-            response.sendRedirect("../BayiDenetimWebProject/index.html");
+            response.sendRedirect("../CompanyOfficer/profile.jsp");
         }  catch (Exception e) {
-
+                System.out.println(e.getMessage());
                System.out.println("olmadı");
 
         }

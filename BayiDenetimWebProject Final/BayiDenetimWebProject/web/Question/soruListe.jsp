@@ -26,7 +26,7 @@
     <div id="newsletter">
       <p></p>
      
-         <form  method="get" action="../index.html">
+         <form  method="post" action="../index.html">
         <fieldset>
           <legend>NewsLetter</legend>
        
@@ -55,7 +55,7 @@
     <div class="fl_left">
   
              <%
-       
+       request.setCharacterEncoding("UTF-8");
             String fName = request.getParameter("fName");
 
             System.out.println(fName);
@@ -100,7 +100,7 @@
                 <tr>
                    
                     <td>Sorular</td>
-                    <form method="get" action="../Question/soruEkle.html">
+                    <form method="post" action="../Question/soruEkle.html">
                       <td> <input type="submit" name="ekle" value="Soru Ekle"><br></td>
                   </form>
                 </tr>
@@ -109,7 +109,7 @@
                  qText = resultSet2.getString("qText");
                 %>
               <tr>
-              <form method="get" action="../Answer/cevapListe.jsp">
+              <form method="post" action="../Answer/cevapListe.jsp">
                   <td> <input type="submit" name="qText" value="<%out.print(qText);%>"><br></td>
              </form>
             </tr>    

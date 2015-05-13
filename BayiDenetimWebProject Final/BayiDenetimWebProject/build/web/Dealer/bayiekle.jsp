@@ -16,7 +16,7 @@
     <body>
         
         <%
-       
+       request.setCharacterEncoding("UTF-8");
         String email = session.getAttribute("email").toString();
         System.out.println(email);
         

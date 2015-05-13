@@ -15,6 +15,7 @@
 
        
   <%
+      request.setCharacterEncoding("UTF-8");
        System.out.println("burdaaa");
         String email = session.getAttribute("email").toString();
         System.out.println(email);
@@ -56,7 +57,7 @@
     <div id="newsletter">
       <p></p>
      
-         <form  method="get" action="../index.html">
+         <form  method="post" action="../index.html">
         <fieldset>
           <legend>NewsLetter</legend>
        
@@ -91,19 +92,19 @@
   
               <br><br>
                 <table>
-                    <form action="../Dealer/bayiekle.html" method="get">
+                    <form action="../Dealer/bayiekle.html" method="post">
                     <tr>
                         <td>Bayi Ekle</td><td><input type="submit" name="bayiEkle" value ="Bayi Ekle" width="150" height="100"><br><br></td>
         </tr>
-                    </form><form action="../Dealer/bayilistesi.jsp" method="get">
+                    </form><form action="../Dealer/bayilistesi.jsp" method="post">
                 <tr>
             <td>Bayi Listesini Gör</td><td><input type="submit" name="bliste" value ="Bayi Listesi" width="150" height="100"><br><br></td>
         </tr>
-        </form><form action="../Form/formekle.html" method="get">
+        </form><form action="../Form/formekle.html" method="post">
                 <tr>
             <td>Form Ekle</td><td><input type="submit" name="fekle" value ="Form Ekle" width="150" height="100"><br><br></td>
         </tr>
-        </form><form action="../Form/formListe.jsp" method="get">
+        </form><form action="../Form/formListe.jsp" method="post">
                 <tr>
                     <td>Form Listesini Gör</td><td><input type="submit" name="fliste" value ="Form Listesi" width="150" height="100"><br><br></td>
         </tr>

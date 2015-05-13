@@ -15,6 +15,7 @@
     <h1>Hello World!</h1>
     
     <% 
+        request.setCharacterEncoding("UTF-8");
         response.sendRedirect("/BayiDenetimWebProject/Home/homePage.html");
     %>
 </body>

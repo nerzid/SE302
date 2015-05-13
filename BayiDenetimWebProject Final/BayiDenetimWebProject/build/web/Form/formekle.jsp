@@ -17,6 +17,7 @@
 
 
        <%
+           request.setCharacterEncoding("UTF-8");
           String email = session.getAttribute("email").toString();
    
         String formName = request.getParameter("fName");
