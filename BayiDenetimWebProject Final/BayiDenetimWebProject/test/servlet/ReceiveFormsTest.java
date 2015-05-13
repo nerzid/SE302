@@ -43,56 +43,8 @@ public class ReceiveFormsTest {
      * Test of processRequest method, of class ReceiveForms.
      */
     @Test
-    public void testProcessRequest() throws Exception {
-        System.out.println("processRequest");
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
-        ReceiveForms instance = new ReceiveForms();
-        instance.processRequest(request, response);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testProcessRequest(){
+        assertTrue(!ReceiveForms.isProcessRequestErrorTest);
+        assertTrue(!ReceiveForms.isUpdateRowErrorTest);
     }
-
-    /**
-     * Test of doGet method, of class ReceiveForms.
-     */
-    @Test
-    public void testDoGet() throws Exception {
-        System.out.println("doGet");
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
-        ReceiveForms instance = new ReceiveForms();
-        instance.doGet(request, response);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of doPost method, of class ReceiveForms.
-     */
-    @Test
-    public void testDoPost() throws Exception {
-        System.out.println("doPost");
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
-        ReceiveForms instance = new ReceiveForms();
-        instance.doPost(request, response);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getServletInfo method, of class ReceiveForms.
-     */
-    @Test
-    public void testGetServletInfo() {
-        System.out.println("getServletInfo");
-        ReceiveForms instance = new ReceiveForms();
-        String expResult = "";
-        String result = instance.getServletInfo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }

@@ -32,6 +32,9 @@ public class TabletAuthentication extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    public static boolean errorTest;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -57,13 +60,16 @@ public class TabletAuthentication extends HttpServlet {
             if (rs.next()) {
                 json.put("message", "success");
                 System.out.println("Your God Damn Right");
+                errorTest = false;
             }
             else
             {
                 json.put("message", "fail");
+                errorTest = true;
             }
         } catch (Exception e) {
             json.put("error", e.getMessage());
+            errorTest = true;
         }
         //System.out.println(json);
         

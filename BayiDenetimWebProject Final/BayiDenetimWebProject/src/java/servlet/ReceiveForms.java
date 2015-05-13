@@ -32,6 +32,10 @@ JSONObject json ;
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+
+public static boolean isProcessRequestErrorTest;
+public static boolean isUpdateRowErrorTest;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -83,10 +87,12 @@ JSONObject json ;
             if(success_count > 0)
             {
                 json.put("message", "success");
+                isProcessRequestErrorTest = false;
             }
             else
             {
                 json.put("message", "fail " + success_count + " " + aText2);
+                isProcessRequestErrorTest = true;
             }
         }
         //System.out.println(json);
@@ -119,9 +125,10 @@ JSONObject json ;
                 ps_update_count.close();
                 ps_answer.close();
             }
-            
+            isUpdateRowErrorTest = false;
         } catch (SQLException ex) {
             json.put("message2", ex.getMessage());
+            isUpdateRowErrorTest = true;
         }
         return count;
     }

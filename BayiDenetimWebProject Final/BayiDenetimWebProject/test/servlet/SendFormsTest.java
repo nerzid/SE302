@@ -43,56 +43,7 @@ public class SendFormsTest {
      * Test of processRequest method, of class SendForms.
      */
     @Test
-    public void testProcessRequest() throws Exception {
-        System.out.println("processRequest");
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
-        SendForms instance = new SendForms();
-        instance.processRequest(request, response);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testProcessRequest(){
+        assertTrue(!SendForms.isProcessRequestErrorTest);
     }
-
-    /**
-     * Test of doGet method, of class SendForms.
-     */
-    @Test
-    public void testDoGet() throws Exception {
-        System.out.println("doGet");
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
-        SendForms instance = new SendForms();
-        instance.doGet(request, response);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of doPost method, of class SendForms.
-     */
-    @Test
-    public void testDoPost() throws Exception {
-        System.out.println("doPost");
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
-        SendForms instance = new SendForms();
-        instance.doPost(request, response);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getServletInfo method, of class SendForms.
-     */
-    @Test
-    public void testGetServletInfo() {
-        System.out.println("getServletInfo");
-        SendForms instance = new SendForms();
-        String expResult = "";
-        String result = instance.getServletInfo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }

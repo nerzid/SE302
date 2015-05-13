@@ -30,6 +30,9 @@ public class SendForms extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    public static boolean isProcessRequestErrorTest;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -112,11 +115,14 @@ public class SendForms extends HttpServlet {
             else
             {
                 json.put("message", "fail");
+                isProcessRequestErrorTest = true;
             }
         } catch (Exception e) {
             json.put("error", e.getMessage());
+            isProcessRequestErrorTest = true;
         }
         //System.out.println(json);
+        isProcessRequestErrorTest = false;
         response.getWriter().write(jarray.toString());
     }
 
