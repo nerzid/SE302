@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package database;
-
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,6 +19,8 @@ import static org.junit.Assert.*;
  * @author mcsahin
  */
 public class DatabaseHandlerTest {
+    
+    Connection conn;
     
     public DatabaseHandlerTest() {
     }
@@ -32,7 +35,10 @@ public class DatabaseHandlerTest {
     
     @Before
     public void setUp() {
+        conn = DatabaseHandler.getConnection();
     }
+    
+    
     
     @After
     public void tearDown() {
@@ -43,12 +49,23 @@ public class DatabaseHandlerTest {
      */
     @Test
     public void testGetConnection() {
+        Connection con = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");//Mysql Connection
+        } catch (ClassNotFoundException ex) {
+            
+        }
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://mysql03.turhost.com:3306/BayiDenetim", "se302", "SE302");//mysql database
+ 
+        } catch (SQLException ex) {
+            
+        }
         System.out.println("getConnection");
-        Connection expResult = null;
-        Connection result = DatabaseHandler.getConnection();
-        assertEquals(expResult, result);
+        Connection expResult = conn;
+        Connection result = con;
+        assertEquals(expResult.toString().contains("com.mysql.jdbc.JDBC4Connection@"), result.toString().contains("com.mysql.jdbc.JDBC4Connection@"));
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
