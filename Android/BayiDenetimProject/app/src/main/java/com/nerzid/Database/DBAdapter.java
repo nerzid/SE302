@@ -97,6 +97,12 @@ public class DBAdapter {
     private DatabaseHelper myDBHelper;
     private SQLiteDatabase db;
 
+    public static boolean testGetAllRows = false;
+    public static boolean testGetRowByRowID = true;
+    public static boolean testisQuestionExist = true;
+
+
+
     /////////////////////////////////////////////////////////////////////
     //	Public methods:
     /////////////////////////////////////////////////////////////////////
@@ -113,8 +119,9 @@ public class DBAdapter {
     }
 
     // Close the database connection.
-    public void close() {
+    public boolean close() {
         myDBHelper.close();
+        return true;
     }
 
     // Add a new set of values to the database.
@@ -167,6 +174,11 @@ public class DBAdapter {
                 where, null, null, null, null, null);
         if (c != null) {
             c.moveToFirst();
+            testGetAllRows = true;
+        }
+        else
+        {
+            testGetAllRows = false;
         }
 
         return c;
@@ -177,23 +189,41 @@ public class DBAdapter {
         String where = KEY_ROWID + "=" + rowId;
         Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
                 where, null, null, null, null, null);
-        if (c != null) {
-            c.moveToFirst();
+
+        try {
+
+            if (c != null) {
+                c.moveToFirst();
+            }
+        }catch (Exception e)
+        {
+            testGetRowByRowID = false;
         }
+
         return c;
     }
 
     public boolean isQuestionExist(int formID, String question)
     {
         //String where = KEY_FORM_NO + " = " + formID + " AND " + KEY_QUESTION_NAME + " = ?";
+        boolean result = false;
+        try
+        {
+            String sql = "SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_FORM_NO + " = " + formID + " AND " + KEY_QUESTION_NAME + " = ?";
+            Cursor c = db.rawQuery(sql,new String[]{question});
+            result = c.moveToFirst();
 
-        String sql = "SELECT * FROM " + DATABASE_TABLE + " WHERE " + KEY_FORM_NO + " = " + formID + " AND " + KEY_QUESTION_NAME + " = ?";
+        }catch (Exception e)
+        {
+            result = false;
+            testisQuestionExist = false;
+        }
 
         //Cursor c = db.query(true,DATABASE_TABLE,ALL_KEYS,where,null,null,null,null,null);
-        Cursor c = db.rawQuery(sql,new String[]{question});
 
 
-        return c.moveToFirst();
+
+        return result;
     }
 
     // Change an existing row to be equal to new data.
