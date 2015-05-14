@@ -58,6 +58,7 @@
        request.setCharacterEncoding("UTF-8");
         String email = session.getAttribute("email").toString();
         System.out.println(email);
+        boolean connect = false;
 
         try{
             String companyID="";
@@ -68,7 +69,7 @@
              System.out.println("driver loaded");
             Connection connection = DriverManager.getConnection("jdbc:mysql://mysql03.turhost.com:3306/BayiDenetim", "se302", "SE302");
              System.out.println("connection comleted");
-            
+            connect = true;
             String query = "SELECT fk_cID FROM CompanyOfficer where coEmail ='"+email+"';";
 
             Statement statement = connection.createStatement();
@@ -135,7 +136,17 @@
               
               <%
                }catch(Exception e){
-                    
+            String errorMessage = "";
+            if (connect == false){
+                errorMessage = "database connection problems";
+            } 
+            else{
+                errorMessage = "database processing problems";
+            }
+                   HttpSession httpSession = request.getSession(true);
+
+          httpSession.setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("../error.jsp");
             }
              %>
 

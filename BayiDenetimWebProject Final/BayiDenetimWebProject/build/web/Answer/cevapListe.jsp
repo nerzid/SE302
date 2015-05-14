@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Answer Page</title>
     </head>
     <body><html>
     <head>
@@ -65,7 +65,8 @@
             String qText = request.getParameter("qText");
             String qID="";
               String aText="";
-
+              String aID="";
+              String aCount="";
             System.out.println(qText);
         try{
 
@@ -80,22 +81,22 @@
             Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query);
 
-                     System.out.println(query);
                   
              while (resultSet.next()) {
                  qID = resultSet.getString("qID");
                
              }
 
-          
                 
                 String query2 = "SELECT aText FROM Answer where fk_qID ='"+qID+"';";
-                     System.out.println(query2);
-
-            Statement statement2 = connection.createStatement();
+                 Statement statement2 = connection.createStatement();
              ResultSet resultSet2 = statement2.executeQuery(query2);
 
-                     System.out.println(query2);
+                 
+                     
+                     
+                     
+                     
                     %>
             <table border="2" align="center">
                 <tr>
@@ -114,13 +115,45 @@
         
               
                   <%
+               String query3 = "SELECT aID FROM `Answer` WHERE fk_qID ='"+qID+"' and aText ='"+aText+"'";
+
+               
+                Statement statement3 = connection.createStatement();
+             ResultSet resultSet3 = statement3.executeQuery(query3);
+
+                  
+             while (resultSet3.next()) {
+                 aID = resultSet3.getString("aID");
+                
              }
+              System.out.println("aid"+aID);
+              
+              String query4 = "SELECT aCount FROM `Answer` WHERE aID='"+aID+"'";
+
+            Statement statement4 = connection.createStatement();
+             ResultSet resultSet4 = statement4.executeQuery(query4);
+
+    
+             while (resultSet4.next()) {
+
+                 aCount = resultSet4.getString("aCount");
+              %>
+             
+                  <td> <%out.print(aCount);%><br></td>
+        
+              
+                  <%
+        }
+        }
+             
              %>
                                </tr>
 
             </table>
                                <%
                }catch(Exception e){
+                   System.out.println("Check database connection");
+                   
                     
             }
              %>

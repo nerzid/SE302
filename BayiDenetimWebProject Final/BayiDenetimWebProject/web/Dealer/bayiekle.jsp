@@ -14,7 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+
         <%
        request.setCharacterEncoding("UTF-8");
         String email = session.getAttribute("email").toString();
@@ -27,6 +27,7 @@
         String tabletKey=request.getParameter("tabletKey");
         String tabletPassword=request.getParameter("tabletPass");
         String companyID="";
+        boolean connect = false;
 
         try{
             String companyName="", address="";
@@ -34,7 +35,7 @@
              System.out.println("driver loaded");
             Connection connection = DriverManager.getConnection("jdbc:mysql://mysql03.turhost.com:3306/BayiDenetim", "se302", "SE302");
              System.out.println("connection comleted");
-            
+            connect = true;
             String query = "SELECT fk_cID FROM CompanyOfficer where coEmail ='"+email+"';";
 
             Statement statement = connection.createStatement();
@@ -42,12 +43,11 @@
 
               while (resultSet.next()) {
                  companyID = resultSet.getString("fk_cID");
-                
-                  System.out.println( companyID );
+                 System.out.println( companyID );
              }
              
-              String query2 = " INSERT INTO `Dealer`(`dName`, `dAddress`, `dRating`, `dTabletKey`, `dTabletPass`, `fk_cID`)VALUES('"+dealersName+"','"+dealersAddress+"','"+dealersRating+"','"+tabletKey+"','"+tabletPassword+"','"+companyID+"');";
-                                System.out.println( query2 );
+                    String query2 = " INSERT INTO `Dealer`(`dName`, `dAddress`, `dRating`, `dTabletKey`, `dTabletPass`, `fk_cID`)VALUES('"+dealersName+"','"+dealersAddress+"','"+dealersRating+"','"+tabletKey+"','"+tabletPassword+"','"+companyID+"');";
+                    System.out.println( query2 );
                    Statement statement2 = connection.createStatement();
                    statement2.executeUpdate(query2);
 
@@ -56,16 +56,27 @@
            
          
         }catch(Exception e){
-                    
-                    }
+            String errorMessage ="";
+               if(connect==true){
+                   errorMessage= "insertion cannot completeddd";
+                }
+               else{
+             errorMessage= "Check database connection";
+               }
+        
+             HttpSession httpSession = request.getSession(true);
+
+          httpSession.setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("../error.jsp");
+        }
             
             
             
-            %>
-          
-        
-        
-        
-        
+        %>
+
+
+
+
+
     </body>
 </html>

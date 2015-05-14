@@ -26,6 +26,7 @@
         String CompanyOffName = request.getParameter("CompanyOffName");
         String CompanyName = request.getParameter("CompanyName");
         String companyID="";
+
         
         String query= "SELECT cID from BayiDenetim.Company where cName='"+CompanyName+"'";
         System.out.println(query);
@@ -52,14 +53,14 @@
             httpSession.setAttribute("password", password);
             response.sendRedirect("./profile.jsp");
 
-        } else {%>
-    <p align="center"> <% out.println("Registration is not succeed"); %></p>
-    <%
-
-        }
+        } 
           
         }catch(Exception e){
-            out.println("Registration is not succeed.");
+            HttpSession httpSession = request.getSession(true);
+              String errorMessage = "Registration is not succeed";
+
+          httpSession.setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("../error.jsp");
         }
         
         

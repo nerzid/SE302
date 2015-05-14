@@ -25,6 +25,7 @@
         String fID = "";
                 String fk_cID = "";
 
+                boolean connect = false;
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
@@ -32,7 +33,7 @@
             Connection connection = DriverManager.getConnection("jdbc:mysql://mysql03.turhost.com:3306/BayiDenetim", "se302", "SE302");
             System.err.println("Connection completed");
             
-            
+            connect = true;
               String query = "SELECT fk_cID FROM CompanyOfficer where coEmail ='"+ email+"';";
 
             Statement statement = connection.createStatement();
@@ -75,8 +76,19 @@
 
         
         }  catch (Exception e) {
+            String errorMessage="";
+            if(connect == false){
+                errorMessage = "database connection problem";
+                
+            }
+            else{
+                errorMessage = "database insertion problem";
+            }
+            
+              HttpSession httpSession = request.getSession(true);
 
-               System.out.println("olmadı");
+          httpSession.setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("../error.jsp");
 
         }
             

@@ -19,7 +19,7 @@
            request.setCharacterEncoding("UTF-8");     
           String formID = session.getAttribute("fID").toString();
 
-        
+        boolean connect=false;
         String soru = request.getParameter("soru");
         String cevapA = request.getParameter("cevapA");
         String cevapB = request.getParameter("cevapB");
@@ -32,7 +32,7 @@
             System.err.println("Driver loadeddd");
             Connection connection = DriverManager.getConnection("jdbc:mysql://mysql03.turhost.com:3306/BayiDenetim", "se302", "SE302");
             System.err.println("Connection completed");
-            
+            connect = true;
           String query = "INSERT INTO `Question`(`qText`, `fk_fID`) VALUES ('"+soru+"','"+formID+"')";
                         System.out.println( query );
                    Statement statement = connection.createStatement();
@@ -73,7 +73,18 @@
             response.sendRedirect("../CompanyOfficer/profile.jsp");
         }  catch (Exception e) {
                 System.out.println(e.getMessage());
-               System.out.println("olmadı");
+                 String errorMessage = "";
+            if(connect = false){
+                errorMessage = "Database connection problem, Registration is not succeed";
+            }
+            else{
+                errorMessage = "Database processing problem, Registration is not succeed ";
+            }
+            HttpSession httpSession = request.getSession(true);
+
+          httpSession.setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("../error.jsp");
+
 
         }
             

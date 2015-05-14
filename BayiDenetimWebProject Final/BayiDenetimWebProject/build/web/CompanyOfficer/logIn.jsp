@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Page</title>
+    <title>Log-In Page</title>
 </head>
 <body>
     
@@ -24,9 +24,7 @@
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
-            System.err.println("Driver loadeddd");
             Connection connection = DriverManager.getConnection("jdbc:mysql://mysql03.turhost.com:3306/BayiDenetim", "se302", "SE302");
-            System.err.println("Connection completed");
            
             Statement statement = connection.createStatement();
             String query = "SELECT coEmail, coPass FROM CompanyOfficer where coEmail='" + email + "' and coPass='" + password + "'";
@@ -38,11 +36,12 @@
                  email1 = resultSet.getString("coEmail");
                 password1 = resultSet.getString("coPass");
                 
-                  System.out.println(email1 +" "+ password1);
 
              }
 
         } catch (Exception e) {
+                out.println("Login is not succeed.");
+                
 
         }
         if ((email.equals(email1)) && (password.equals(password1))) {
@@ -52,9 +51,12 @@
             httpSession.setAttribute("password", password);
             response.sendRedirect("./profile.jsp");
 
-        } else {%>
-    <p align="center"> <% out.println("Oturum açma başarısız"); %></p>
-    <%
+        } else {
+             HttpSession httpSession = request.getSession(true);
+              String errorMessage = "Your username or password wrong we cannot find you :(";
+
+          httpSession.setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("../error.jsp");
 
         }
 

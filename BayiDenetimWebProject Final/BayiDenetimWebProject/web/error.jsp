@@ -1,7 +1,10 @@
+<%-- 
+    Document   : error
+    Created on : May 14, 2015, 9:36:43 PM
+    Author     : pinarsolak
+--%>
 
-
-
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -26,6 +29,7 @@
  <input type="text" name="email" required="required"/>
 <input type="text" name="password" required="required"/>
  <input type="submit" name="login" value="login" />
+ 
         </fieldset>
       </form>
     </div>
@@ -36,8 +40,8 @@
   <div id="topbar">
     <div id="topnav">
       <ul>
-        <li><a href="./index.html">Anasayfa</a></li>
-        <li class="active"><a href="./hakkimizda.html">Hakkimizda</a></li>
+        <li class="active"><a href="./index.html">Anasayfa</a></li>
+        <li><a href="./hakkimizda.html">Hakkimizda</a></li>
         <li><a href="./Home/registerCompany.html">Ücretsiz Üye Ol</a></li>
         <li><a href="./iletisim.html">Iletisim</a></li>
 
@@ -52,13 +56,17 @@
   <div class="wrapper col3">
   <div id="intro">
     <div class="fl_left">
-      <h6>Bayi Denetim Sistemi</h6>
-      <p>Vizyonumuz  </p>
-      <p> Sürekli gelişme ve yenilikçi bir yaklaşımla, müşterinin talep ettiği kaliteli ürünü, doğru zamanda ve uygun fiyatla sunarak, sektörde lider konuma sahip olmaktır. </p>
-
+      <h6>ERROR PAGE</h6>
       
-      <p> Misyonumuz</p>
-      <p> Şirketimizin temel değerleri doğrultusunda iş ahlakı, dürüstlük ve kaliteden ödün vermeden, müşteri odaklı çalışmalarını sürdüren ve küreselleşen dünyaya ayak uyduran bir firma olarak sektörde bulunmaktır </p>
+      
+      <%
+      
+        request.setCharacterEncoding("UTF-8");
+        String errorMessage = session.getAttribute("errorMessage").toString();
+        
+      %>
+      <p> <%out.println(errorMessage);%></p>
+      
       
     </div>
     <div class="fl_right"><img src="images/demo/bayi.png" alt="" /></div>

@@ -18,12 +18,12 @@
         <%
             
             request.setCharacterEncoding("UTF-8");
-            
+            boolean connect = false;
           try{
          Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection("jdbc:mysql://mysql03.turhost.com:3306/BayiDenetim", "se302", "SE302");
         Statement statement = connection.createStatement();
-        
+        connect = true;
         String cID = "";
         String cName = request.getParameter("cName");
         String cAddress=request.getParameter("cAddress");
@@ -44,11 +44,24 @@
             <p align="center"> <% out.println("Registration is succeed"); %></p>
    
     <%
-            response.sendRedirect("../Home/homepage.html");
+            response.sendRedirect("../CompanyOfficer/register1.jsp");
         
           
         }catch(Exception e){
             out.println("Registration is not succeed.");
+            String errorMessage = "";
+            if(connect = false){
+                errorMessage = "Database connection problem, Registration is not succeed";
+            }
+            else{
+                errorMessage = "Database processing problem, Registration is not succeed ";
+            }
+            HttpSession httpSession = request.getSession(true);
+
+          httpSession.setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("../error.jsp");
+
+            
         }
         
         

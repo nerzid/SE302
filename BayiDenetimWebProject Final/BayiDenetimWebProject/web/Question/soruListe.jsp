@@ -57,7 +57,7 @@
              <%
        request.setCharacterEncoding("UTF-8");
             String fName = request.getParameter("fName");
-
+            boolean connect = false;
             System.out.println(fName);
         try{
             String companyID="";
@@ -69,7 +69,7 @@
              System.out.println("driver loaded");
             Connection connection = DriverManager.getConnection("jdbc:mysql://mysql03.turhost.com:3306/BayiDenetim", "se302", "SE302");
              System.out.println("connection comleted");
-            
+            connect = true;
             String query = "SELECT fID FROM Form where fName ='"+fName+"';";
 
             Statement statement = connection.createStatement();
@@ -122,7 +122,18 @@
               <%
               
                }catch(Exception e){
-                    
+                             String errorMessage = "";
+            if(connect = false){
+                errorMessage = "Database connection problem";
+            }
+            else{
+                errorMessage = "Database processing problem";
+            }
+            HttpSession httpSession = request.getSession(true);
+
+          httpSession.setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("../error.jsp");
+
             }
              %>
              </div>

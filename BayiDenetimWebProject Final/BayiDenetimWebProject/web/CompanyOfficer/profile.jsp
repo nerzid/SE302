@@ -16,7 +16,6 @@
        
   <%
       request.setCharacterEncoding("UTF-8");
-       System.out.println("burdaaa");
         String email = session.getAttribute("email").toString();
         System.out.println(email);
         String login = "login";
@@ -35,7 +34,6 @@
             ResultSet resultSet = statement.executeQuery(query);
 
             while(resultSet.next()){
-               //companyName=resultSet.getString("coID");
                 companyOffName=resultSet.getString("coName");
                 
                
@@ -120,6 +118,11 @@
           
         }
         catch(Exception e){
+             HttpSession httpSession = request.getSession(true);
+              String errorMessage = "Database connection problem";
+
+          httpSession.setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("../error.jsp");
             
         }
   

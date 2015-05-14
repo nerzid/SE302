@@ -114,9 +114,15 @@
             </table>
                 <%
         }catch(Exception e){
-                    
-                    }
+                String errorMessage = "";    
+              System.out.println("check database connection");
+                HttpSession httpSession = request.getSession(true);
+
+          httpSession.setAttribute("errorMessage", errorMessage);
+            response.sendRedirect("../error.jsp");
+        }
             
+        
             
             
             %>
